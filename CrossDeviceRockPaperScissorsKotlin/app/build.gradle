@@ -1,17 +1,33 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
-    compileSdk 32
+    namespace 'com.google.crossdevice.sample.rps'
+    
+    compileSdk = libs.versions.compileSdk.get().toInteger()
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
+    }
 
     defaultConfig {
         applicationId "com.google.crossdevice.sample.rps"
-        minSdk 26
-        targetSdk 32
+        minSdk = libs.versions.minSdk.get().toInteger()
+        targetSdk = libs.versions.targetSdk.get().toInteger()
         versionCode 1
         versionName "1.0"
+        
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     buildTypes {
@@ -20,25 +36,47 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+    
     kotlinOptions {
-        kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = '17'
+    }
+    
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 }
 
 dependencies {
-    def crossdeviceVersion = findProperty("crossdeviceVersion") ?: "0.1.0-preview01"
+    def crossdeviceVersion = findProperty("crossdeviceVersion") ?: libs.versions.crossdevice.get()
+    def composeBom = platform('androidx.compose:compose-bom:2024.02.00')
 
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.0'
-    implementation 'com.google.android.material:material:1.6.1'
+    // AndroidX Core
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.lifecycle.runtime.ktx
+    implementation libs.androidx.activity.compose
 
-    // Cross device SDK:
+    // Compose
+    implementation composeBom
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manager-js'
+
+    // Cross device SDK
     implementation "com.google.ambient.crossdevice:crossdevice:${crossdeviceVersion}"
 
+    // ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0'
+
+    // Navigation
+    implementation 'androidx.navigation:navigation-compose:2.7.7'
 }

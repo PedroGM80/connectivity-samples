@@ -16,23 +16,36 @@
 
 package com.google.crossdevice.sample.rps.ui
 
-import android.content.Intent
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import com.google.crossdevice.sample.rps.R
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
+import com.google.crossdevice.sample.rps.ui.compose.MainScreen
+import com.google.crossdevice.sample.rps.ui.theme.CrossDeviceRPSTheme
 
-/** Activity for selecting the kind of Rock Paper Scissors game to play */
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
-  fun onModeSelected(view: View) {
-    getIntentForModeSelected(view.id)?.let { startActivity(it) }
-  }
-
-  private fun getIntentForModeSelected(id: Int): Intent? {
-    return when (id) {
-      R.id.two_player_discovery_api -> Intent(this, DiscoveryTwoPlayerActivity::class.java)
-      R.id.two_player_sessions_api -> Intent(this, SessionsTwoPlayerActivity::class.java)
-      R.id.single_player_sessions_api -> Intent(this, SessionsSinglePlayerActivity::class.java)
-      else -> null
+/**
+ * Main activity that hosts the Rock Paper Scissors game selection screen.
+ * Uses Jetpack Compose for the UI.
+ */
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        setContent {
+            CrossDeviceRPSTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    val navController = rememberNavController()
+                    MainScreen(navController = navController)
+                }
+            }
+        }
     }
-  }
 }
