@@ -10,6 +10,8 @@ buildscript {
     dependencies {
         // Using the plugins block is the preferred way to apply plugins in the root build.gradle file
         // The actual versions are defined in libs.versions.toml
+        classpath libs.gradle
+        classpath libs.kotlin.gradle.plugin
     }
 }
 

@@ -1,23 +1,25 @@
 [versions]
 # Android
-agp = "8.2.2"
+agp = "8.12.0"
+gradle = "8.12.0"
+kotlinGradlePlugin = "1.9.20"
 minSdk = "26"
-compileSdk = "34"
+compileSdk = "36"
 targetSdk = "34"
 
 # Kotlin
-kotlin = "1.9.20"
-coroutines = "1.7.3"
+kotlin = "2.2.0"
+coroutines = "1.10.2"
 
 # AndroidX
-coreKtx = "1.12.0"
-activityCompose = "1.8.2"
-lifecycle = "2.7.0"
-lifecycleViewmodelCompose = "2.7.0"
-navigationCompose = "2.7.7"
+coreKtx = "1.16.0"
+activityCompose = "1.10.1"
+lifecycle = "2.9.2"
+lifecycleViewmodelCompose = "2.9.2"
+navigationCompose = "2.9.3"
 
 # Compose
-composeBom = "2024.02.00"
+composeBom = "2025.07.00"
 composeCompiler = "1.5.1"
 
 # Cross Device SDK
@@ -41,6 +43,8 @@ compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 
 # Kotlin
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
