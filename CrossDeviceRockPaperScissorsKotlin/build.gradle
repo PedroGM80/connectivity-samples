@@ -25,22 +25,3 @@ plugins {
 tasks.register('clean', Delete) {
     delete rootProject.layout.buildDirectory
 }
-
-// Enable version catalog access in precompiled script plugins
-// This allows using version catalog in buildSrc or composite builds
-// For this project, we're using it directly in build.gradle files
-dependencyResolutionManagement {
-    // Use the same repositories for all projects
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    
-    repositories {
-        google()
-        mavenCentral()
-    }
-    
-    // Enable version catalogs for all projects
-    versionCatalogs {
-        // This makes the libs version catalog available to all projects
-        // The actual catalog is defined in gradle/libs.versions.toml
-    }
-}
