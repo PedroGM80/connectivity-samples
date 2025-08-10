@@ -31,6 +31,7 @@ Pre-requisites
 - Android SDK 28
 - Android Build Tools v28.0.3
 - Android Support Repository
+- JDK 11 (install via `mise use -g java@11` or ensure your JAVA_HOME points to a JDK 11 installation)
 
 Screenshots
 -------------
