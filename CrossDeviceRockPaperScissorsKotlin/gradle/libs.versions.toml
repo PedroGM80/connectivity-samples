@@ -3,6 +3,7 @@
 agp = "8.12.0"
 gradle = "8.12.0"
 kotlinGradlePlugin = "1.9.20"
+material = "1.12.0"
 minSdk = "26"
 compileSdk = "36"
 targetSdk = "34"
@@ -50,9 +51,11 @@ kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 
 # Cross Device SDK
 crossdevice-sdk = { group = "com.google.ambient.crossdevice", name = "crossdevice", version.ref = "crossdevice" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
