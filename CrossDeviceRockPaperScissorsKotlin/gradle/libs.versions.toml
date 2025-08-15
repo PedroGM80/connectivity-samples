@@ -24,7 +24,8 @@ navigationCompose = "2.9.3"
 
 # Compose
 composeBom = "2025.08.00"
-composeCompiler = "1.5.1"
+# Con el plugin org.jetbrains.kotlin.plugin.compose no fijes compilerExtensionVersion
+composeCompiler = "1.5.1" # (no se usará)
 
 # Cross Device SDK
 crossdevice = "0.1.0-preview01"
@@ -47,15 +48,16 @@ compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 
-# Kotlin
+# Kotlin / Hilt
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
+# CORRECTO: compiler de Hilt
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltCompiler" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
-# Cross Device SDK
+# Cross Device SDK / Material
 crossdevice-sdk = { group = "com.google.ambient.crossdevice", name = "crossdevice", version.ref = "crossdevice" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 
@@ -65,3 +67,5 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+# AÑADIDO: plugin de Hilt
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }

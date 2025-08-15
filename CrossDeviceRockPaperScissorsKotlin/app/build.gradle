@@ -3,19 +3,16 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)
 }
 
 android {
     namespace 'com.google.crossdevice.sample.rps'
-    
+
     compileSdk = libs.versions.compileSdk.get().toInteger()
 
     buildFeatures {
         compose true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 
     defaultConfig {
@@ -24,7 +21,7 @@ android {
         targetSdk = libs.versions.targetSdk.get().toInteger()
         versionCode 1
         versionName "1.0"
-        
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
@@ -37,12 +34,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    
+
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -52,6 +49,11 @@ android {
 
 kotlin {
     jvmToolchain(17)
+}
+
+kapt {
+    correctErrorTypes = true
+    useBuildCache = true
 }
 
 dependencies {
@@ -65,10 +67,10 @@ dependencies {
     implementation libs.compose.ui
     implementation libs.compose.ui.graphics
     implementation libs.compose.ui.tooling.preview
-    
-    // Material Components (v2) - Necesario para el tema actual
+
+    // Material Components (v2) - para tema actual
     implementation libs.material
-    
+
     // Material 3
     implementation libs.compose.material3
     debugImplementation libs.compose.ui.tooling
@@ -83,8 +85,8 @@ dependencies {
     // Navigation
     implementation libs.androidx.navigation.compose
 
-    //Dagger hilt
-    implementation (libs.hilt.android)
-    kapt (libs.hilt.compiler)
-    implementation (libs.androidx.hilt.navigation.compose)
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 }
