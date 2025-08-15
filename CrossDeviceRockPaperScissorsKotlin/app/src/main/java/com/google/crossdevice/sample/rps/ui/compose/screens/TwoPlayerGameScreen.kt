@@ -1,18 +1,3 @@
-/*
- * Copyright 2022 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package com.google.crossdevice.sample.rps.ui.compose.screens
 
@@ -23,9 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -65,12 +49,11 @@ fun TwoPlayerGameScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp)
-                    .verticalScroll(rememberScrollState()),
+                    .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                // Game Status
+                // Estado de la partida
                 GameStatus(
                     playerName = playerName,
                     opponentName = opponentName,
@@ -78,26 +61,27 @@ fun TwoPlayerGameScreen(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                // Score Display
+                // Separa para centrar verticalmente el marcador
+                Spacer(modifier = Modifier.weight(1f))
+
+                // Marcador
                 Text(
                     text = score,
                     style = MaterialTheme.typography.displayLarge,
                     fontSize = 80.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(vertical = 16.dp)
+                    modifier = Modifier.fillMaxWidth()
                 )
 
-                // Move Buttons
+                // Botones de movimiento
                 MoveButtons(
                     onMoveSelected = onMoveSelected,
                     enabled = isConnected && !isSearching,
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                // Action Buttons
+                // Botones de acción
                 Column(
                     modifier = Modifier.fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -111,8 +95,10 @@ fun TwoPlayerGameScreen(
                     ) {
                         Text(
                             text = stringResource(
-                                id = if (isSearching) R.string.status_searching 
-                                    else R.string.action_find_opponents
+                                id = if (isSearching)
+                                    R.string.status_searching
+                                else
+                                    R.string.action_find_opponents
                             )
                         )
                     }
@@ -131,6 +117,8 @@ fun TwoPlayerGameScreen(
                         Text(text = stringResource(R.string.action_disconnect))
                     }
                 }
+
+                Spacer(modifier = Modifier.weight(1f))
             }
         }
     }

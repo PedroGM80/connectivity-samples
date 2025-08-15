@@ -18,7 +18,6 @@ package com.google.crossdevice.sample.rps
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-
 /**
  * Application class for the Rock Paper Scissors game.
  * This class is required for Hilt dependency injection.

@@ -38,7 +38,7 @@ fun GameStatus(
 ) {
     Column(modifier = modifier.padding(16.dp)) {
         Text(
-            text = stringResource(R.string.player_name, playerName),
+            text = "player name:$playerName",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold
         )
@@ -46,7 +46,7 @@ fun GameStatus(
         Spacer(modifier = Modifier.height(8.dp))
         
         Text(
-            text = opponentName ?: stringResource(R.string.opponent_not_connected),
+            text = opponentName ?: "Opponent not found",
             style = MaterialTheme.typography.bodyMedium
         )
         

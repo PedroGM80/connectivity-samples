@@ -124,7 +124,7 @@ class TwoPlayerGameDataViewModel : ViewModel(), GameData {
   }
 
   private fun getRandomGameChoice() =
-    GameChoice.values()[randomGenerator.nextInt(GameChoice.values().size)]
+    GameChoice.entries[randomGenerator.nextInt(GameChoice.entries.size)]
 
   private fun incrementLocalPlayerScore() {
     localPlayerScore.value = localPlayerScoreValue + 1

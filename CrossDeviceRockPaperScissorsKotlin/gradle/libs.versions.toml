@@ -2,6 +2,9 @@
 # Android
 agp = "8.12.0"
 gradle = "8.12.0"
+hiltAndroid = "2.57"
+hiltCompiler = "2.57"
+hiltNavigationCompose = "1.2.0"
 kotlinGradlePlugin = "1.9.20"
 material = "1.12.0"
 minSdk = "26"
@@ -13,14 +16,14 @@ kotlin = "2.2.0"
 coroutines = "1.10.2"
 
 # AndroidX
-coreKtx = "1.16.0"
+coreKtx = "1.17.0"
 activityCompose = "1.10.1"
 lifecycle = "2.9.2"
 lifecycleViewmodelCompose = "2.9.2"
 navigationCompose = "2.9.3"
 
 # Compose
-composeBom = "2025.07.00"
+composeBom = "2025.08.00"
 composeCompiler = "1.5.1"
 
 # Cross Device SDK
@@ -30,6 +33,7 @@ crossdevice = "0.1.0-preview01"
 # AndroidX
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
@@ -45,6 +49,8 @@ compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-mani
 
 # Kotlin
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
